@@ -3,6 +3,7 @@ import msgpack
 
 class MsgPacker():
 
+    #Serilizes the json_object into msgpack
     @classmethod
     def serializeJson(self, json_object):
         with open("msgpackages/" + json_object["CPR"] + ".msgpack", "wb") as cpr_msgpack:
@@ -11,6 +12,7 @@ class MsgPacker():
 
 
     #TODO: add nemID
+    #Adds the person information to json_object
     @classmethod
     def addToJsonObject(self, person, cpr):
         json_object = {
