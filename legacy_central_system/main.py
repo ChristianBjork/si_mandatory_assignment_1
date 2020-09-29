@@ -41,9 +41,8 @@ def writeToXML():
             # print(r.status_code)
 
 # from https://pymotw.com/2/xml/etree/ElementTree/create.html
+# Return a pretty-printed XML string for the Element.
 def prettify(elem):
-    """Return a pretty-printed XML string for the Element.
-    """
     rough_string = ET.tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
