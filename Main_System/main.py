@@ -28,17 +28,20 @@ def writeToXML():
             child_cpr = ET.SubElement(root, 'CprNumber')
             cpr_nr = "%0.10d" % randint(0, 99999999)
             child_cpr.text = cpr_nr
+            child_email = ET.SubElement(root, 'Email')
+            child_email.text = person[2]
 
             print (prettify(root))
-
-            json_object = msgPacker.addToJsonObject(person, cpr_nr)
-            msgPacker.serializeJson(json_object)
-
             
             #TODO: Implement
             #Send post request
-            # r = requests.post('http://localhost:8080/nemID', data=root)
-            # print(r.status_code)
+            response = requests.post('http://localhost:8080/nemID', data=ET.tostring(root), headers={"Content-Type": "text/xml"})
+            
+            json_data = json.loads(response.text)
+
+            json_object = msgPacker.addToJsonObject(person, cpr_nr, json_data["nemID"])
+            msgPacker.serializeJson(json_object)
+
 
 # from https://pymotw.com/2/xml/etree/ElementTree/create.html
 # Return a pretty-printed XML string for the Element.
