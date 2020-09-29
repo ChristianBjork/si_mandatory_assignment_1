@@ -14,7 +14,7 @@ def writeToXML():
     msgPacker = MsgPacker()
 
     #Open file and read data from people.csv
-    with open("../data/people.csv", "r") as data: 
+    with open("people.csv", "r") as data: 
         people = csv.reader(data)
         #Skips first row, which is the attribute names
         next(people, None)
@@ -24,7 +24,7 @@ def writeToXML():
             child_fn = ET.SubElement(root, 'FirstName')
             child_fn.text = person[0]
             child_ln = ET.SubElement(root, 'LastName')
-            child_ln.text = person[1]git 
+            child_ln.text = person[1]
             child_cpr = ET.SubElement(root, 'CprNumber')
             cpr_nr = "%0.10d" % randint(0, 99999999)
             child_cpr.text = cpr_nr
