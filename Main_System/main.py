@@ -25,10 +25,10 @@ def writeToXML():
             child_fn.text = person[0]
             child_ln = ET.SubElement(root, 'LastName')
             child_ln.text = person[1]
-            child_cpr = ET.SubElement(root, 'CprNumber')
+            child_cpr = ET.SubElement(root, 'cprnumber')
             cpr_nr = "%0.10d" % randint(0, 99999999)
             child_cpr.text = cpr_nr
-            child_email = ET.SubElement(root, 'Email')
+            child_email = ET.SubElement(root, 'email')
             child_email.text = person[2]
 
             print (prettify(root))

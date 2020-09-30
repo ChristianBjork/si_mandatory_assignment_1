@@ -23,7 +23,7 @@ class MsgPacker():
             'country': person[4],
             'phone': person[5],
             'address': person[6],
-            'CPR': cpr,
+            'cpr': cpr,
             'NemID': nemID
         }
         return json_object
