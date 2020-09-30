@@ -15,7 +15,6 @@ app.get('/test', (req, res) => {
     res.status(200).send({ message: "Server is running just fine on port 8080... " })
 });
 
-
 app.post('/nemId', xmlparser({ trim: false, explicitArray: false }), async (req, res, next) => {
     let cpr = req.body.person.cprnumber;
     let email = req.body.person.email;

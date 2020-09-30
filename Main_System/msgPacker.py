@@ -6,7 +6,7 @@ class MsgPacker():
     #Serilizes the json_object into msgpack
     @classmethod
     def serializeJson(self, json_object):
-        with open("msgpackages/" + json_object["CPR"] + ".msgpack", "wb") as cpr_msgpack:
+        with open("msgpackages/" + json_object["cpr"] + ".msgpack", "wb") as cpr_msgpack:
             packed = msgpack.packb(json_object)
             cpr_msgpack.write(packed)
 

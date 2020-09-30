@@ -5,6 +5,7 @@ from xml.dom import minidom
 from random import randint
 from msgPacker import MsgPacker
 import requests
+import json
 
 def main():
 

@@ -1,14 +1,14 @@
 //Written by Christian Bjørk Christiansen
 
 const express = require('express');
-var bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 var app = express();
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
 
 app.post('/generate-password-nemID', (req, res) => {
     console.log("nemId: " + req.body.nemId);

@@ -20,7 +20,7 @@ app.post('/generate-nemId', (req, res) => {
     let last_4_digits_of_CPR = cpr.substr(cpr.length - 4);
     let random_5_digit_number = Math.floor(Math.random() * 90000) + 10000;
     let nemId = random_5_digit_number + last_4_digits_of_CPR
-    res.status(201).send({ nemID: nemId });
+    res.status(201).send({ nemId: nemId });
 });
 
 
