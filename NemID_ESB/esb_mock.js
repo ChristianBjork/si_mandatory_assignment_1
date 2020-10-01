@@ -28,7 +28,7 @@ app.post('/nemId', xmlparser({ trim: false, explicitArray: false }), async (req,
                     console.log(err);
                 }
                 else {
-                    console.log("Inserted");
+                    console.log("Inserted nemId: " + nemId);
                     return res.status(200).send({ nemID: nemId });
                 }
             });
@@ -42,9 +42,9 @@ app.post('/nemId', xmlparser({ trim: false, explicitArray: false }), async (req,
     });
 });
 
-
 app.post('/generate-auth-code', async (req, res) => {
     let data = req.body;
+    console.log(data)
     axios.post('http://localhost:8090/nemid-auth', data).then(response => {
         console.log(response)
         return res.status(200).send({ generatedCode: response.data.generatedCode });

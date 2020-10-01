@@ -3,23 +3,19 @@ import csv
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 from random import randint
-from msgPacker import MsgPacker
+from dataHandler import DataHandler
 import requests
 import json
 
 def main():
-
-    writeToXML()
-
-def writeToXML():
-    msgPacker = MsgPacker()
+    dataHandler = DataHandler()
 
     #Open file and read data from people.csv
     with open("people.csv", "r") as data: 
         people = csv.reader(data)
         #Skips first row, which is the attribute names
         next(people, None)
-        #For every person found, do the following
+        #For every person found --> Create XML-body and post it
         for person in people:
             root = ET.Element('Person')
             child_fn = ET.SubElement(root, 'FirstName')
@@ -34,17 +30,16 @@ def writeToXML():
 
             print (prettify(root))
             
-            #TODO: Implement
             #Send post request
             response = requests.post('http://localhost:8080/nemID', data=ET.tostring(root), headers={"Content-Type": "text/xml"})
             
+            #Recive response
             json_data = json.loads(response.text)
 
-            json_object = msgPacker.addToJsonObject(person, cpr_nr, json_data["nemID"])
-            msgPacker.serializeJson(json_object)
+            #Create json object from response data and serialize it to msgpack file
+            json_object = dataHandler.addToJsonObject(person, cpr_nr, json_data["nemID"])
+            dataHandler.serializeJson(json_object)
 
-
-# from https://pymotw.com/2/xml/etree/ElementTree/create.html
 # Return a pretty-printed XML string for the Element.
 def prettify(elem):
     rough_string = ET.tostring(elem, 'utf-8')

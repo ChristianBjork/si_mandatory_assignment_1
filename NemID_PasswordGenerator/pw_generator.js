@@ -1,16 +1,11 @@
 //Written by Christian Bjørk Christiansen
-
 const express = require('express');
-// const bodyParser = require('body-parser');
 
 var app = express();
 
 app.use(express.json());
-// app.use(bodyParser.urlencoded({
-//     extended: true
-// }));
 
-app.post('/generate-password-nemID', (req, res) => {
+app.post('/generate-password-nemID', async (req, res) => {
     console.log("nemId: " + req.body.nemId);
     console.log("cpr: " + req.body.cpr);
 
@@ -18,9 +13,9 @@ app.post('/generate-password-nemID', (req, res) => {
     let cpr = req.body.cpr;
 
     let nemIdPassword = nemId.substr(0, 2) + cpr.substr(cpr.length - 2);
+    console.log(nemIdPassword)
     res.status(200).send({ nemIdPassword: nemIdPassword })
 });
-
 
 //Test that server is up and running
 app.get('/test', (req, res) => {

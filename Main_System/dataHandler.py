@@ -1,7 +1,7 @@
 #Written by Christian Bjørk Christiansen
 import msgpack
 
-class MsgPacker():
+class DataHandler():
 
     #Serilizes the json_object into msgpack
     @classmethod
@@ -10,8 +10,6 @@ class MsgPacker():
             packed = msgpack.packb(json_object)
             cpr_msgpack.write(packed)
 
-
-    #TODO: add nemID
     #Adds the person information to json_object
     @classmethod
     def addToJsonObject(self, person, cpr, nemID):
