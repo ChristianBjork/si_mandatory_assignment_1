@@ -1,11 +1,15 @@
 //Written by Christian Bjørk Christiansen og Lasse Emil Poulsen
 const express = require('express');
 const sqlite3 = require('sqlite3');
+const bodyParser = require('body-parser');
 
 var db = new sqlite3.Database('../NemID_ESB/nem_id_database.sqlite');
 var app = express();
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.post('/nemid-auth', async (req, res) => {
     console.log("nemIdCode: " + req.body.nemIdCode);
@@ -26,7 +30,7 @@ app.post('/nemid-auth', async (req, res) => {
             console.log(err);
             res.status(403).send({ error: err });
         } else {
-            console.log("should be our data ", rows);
+            console.log("should be undefined ", rows);
             res.status(403).send({ err_msg: "failed to authenticate..." });
         }
     });

@@ -12,3 +12,7 @@ CREATE TABLE [auth_log](
     [Timestamp] DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY ([UserId]) REFERENCES [user](Id)
 );
+
+
+
+
