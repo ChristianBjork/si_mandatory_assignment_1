@@ -1,6 +1,7 @@
 # mandatory_assignment_1
+Author of code is written in line 1 in each file.
 
-I have the root folder opened within VSCODE
+Ran npm install at root lvl, so that we didn't have to do it in each folder.
 
 ## Step 1
 make sure that python, nodejs and npm is installed
